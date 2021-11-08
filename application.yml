@@ -1,0 +1,50 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8010/eureka
+  instance:
+    hostname: localhost
+server:
+  port: 8082
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: users-status-check
+        filters:
+        - RemoveRequestHeader=X-USERS-COUNTRY
+        - AddRequestHeader=X-USERS-CLIENT, mobile
+        - AuthorizationHeaderFilter
+        predicates:
+        - Path=/users/status
+        - Method=GET
+        - Header=Authorization, Bearer (.*)
+        uri: lb://users-ws
+      - id: create-users
+        predicates:
+        - Path=/users
+        - Method=POST
+        uri: lb://users-ws
+      - id: users-login
+        predicates:
+        - Path=/users/login
+        - Method=POST
+        uri: lb://users-ws
+      - id: users-get-update-delete
+        predicates:
+        - Path=/users/**
+        - Method=GET,PUT,DELETE
+        - Header=Authorization, Bearer (.*)
+        filters: 
+        - AuthorizationHeaderFilter
+        uri: lb://users-ws
+      - id: h2-console
+        predicates:
+        - Path=/h2-console
+        - Method=GET
+        uri: lb://users-ws
+token:
+  secret: lfjo3o4jojfojoj3ojojdfojksopkpppp
+  expiration: 865040
