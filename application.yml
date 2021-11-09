@@ -28,7 +28,7 @@ spring:
 gateway:
   ip: 10.0.2.15
 token:
-  secret: lfjo3o4jojfojoj3ojojdfojksopkpppp
+  secret: lfjo3o4jojfojoj3ojojdfojksopkzzz
   expiration: 86504
 login:
   url:
