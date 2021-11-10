@@ -76,3 +76,10 @@ grant all privileges on photo_app.* to 'admin'@'localhost';
 flush privileges;
 sudo mysql -u admin -p
 
+# Installing & Running MYSQL Workbench
+
+Download DEB Package from -> https://dev.mysql.com/downloads/workbench/
+sudo apt-get -f install
+sudo dpkg -i mysql-workbench-community_8.0.27-1ubuntu20.04_amd64.deb
+
+
