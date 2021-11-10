@@ -66,3 +66,13 @@ sudo service mysql stop
 # To start the MYSQL service
 
 sudo service mysql start
+
+# PhotoApp MYSQL queries
+
+create database photo_app;
+use photo_app;
+create user 'admin'@'localhost' identified by 'Admin@89';
+grant all privileges on photo_app.* to 'admin'@'localhost';
+flush privileges;
+sudo mysql -u admin -p
+
