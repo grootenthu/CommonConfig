@@ -58,7 +58,6 @@ sudo service mysql status
 sudo mysql -u root -p
 
 Enter root password!!
-<<<<<<< HEAD
 
 # To stop the MYSQL service
 
