@@ -70,10 +70,15 @@ sudo service mysql start
 # PhotoApp MYSQL queries
 
 create database photo_app;
+
 use photo_app;
+
 create user 'admin'@'localhost' identified by 'Admin@89';
+
 grant all privileges on photo_app.* to 'admin'@'localhost';
+
 flush privileges;
+
 sudo mysql -u admin -p
 
 # Installing & Running MYSQL Workbench
@@ -81,5 +86,15 @@ sudo mysql -u admin -p
 Download DEB Package from -> https://dev.mysql.com/downloads/workbench/
 sudo apt-get -f install
 sudo dpkg -i mysql-workbench-community_8.0.27-1ubuntu20.04_amd64.deb
+
+# Asymmetric encryption
+
+Generate jks file:
+
+keytool -genkeypair -alias apiEncryptionKey -keyalg RSA -dname "CN=Groot Enthu,OU=API Development,O=amit.patil60@outlook.com,L=PUNE,S=MH,C=IN" -keypass 1q2w3e4r -keystore apiEncryptionKey.jks -storepass 1q2w3e4r
+
+PKCS12 migration of jks file:
+
+keytool -importkeystore -srckeystore apiEncryptionKey.jks -destkeystore apiEncryptionKey.jks -deststoretype pkcs12![image](https://user-images.githubusercontent.com/59046175/152102464-03488e2e-6082-4ce1-89cd-4970be9e9266.png)
 
 
