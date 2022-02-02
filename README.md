@@ -95,6 +95,6 @@ keytool -genkeypair -alias apiEncryptionKey -keyalg RSA -dname "CN=Groot Enthu,O
 
 PKCS12 migration of jks file:
 
-keytool -importkeystore -srckeystore apiEncryptionKey.jks -destkeystore apiEncryptionKey.jks -deststoretype pkcs12![image](https://user-images.githubusercontent.com/59046175/152102464-03488e2e-6082-4ce1-89cd-4970be9e9266.png)
+keytool -importkeystore -srckeystore apiEncryptionKey.jks -destkeystore apiEncryptionKey.jks -deststoretype pkcs12
 
 
